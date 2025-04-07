@@ -1,101 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHUUDEN™</title>
-
-  <!-- Fuente Satoshi desde Fontshare -->
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Satoshi', sans-serif;
       height: 100%;
-      background: black;
+      overflow: hidden;
+      font-family: 'Satoshi', sans-serif;
     }
 
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100dvh;
-      overflow: hidden;
+      min-height: 100vh;
+      color: white;
     }
 
     video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -1;
     }
 
     .content {
-      color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 0 2rem;
     }
 
-    .content h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-
-    .content h2 {
-      font-size: 1.5rem;
-      font-weight: 500;
+    h1 {
+      font-size: 2rem;
       margin-bottom: 0.5rem;
     }
 
-    .content p {
-      font-size: 1rem;
-      font-weight: 400;
-      margin: 0.4rem 0;
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: normal;
     }
 
-    @media (max-width: 768px) {
-      .content h1 {
-        font-size: 2rem;
-      }
-
-      .content h2 {
-        font-size: 1.2rem;
-      }
-
-      .content p {
-        font-size: 0.95rem;
-      }
+    p {
+      font-size: 0.9rem;
+      margin: 0.2rem 0;
     }
 
-    @media (max-width: 480px) {
-      .content h1 {
-        font-size: 1.6rem;
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
       }
 
-      .content h2 {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
         font-size: 1rem;
-      }
-
-      .content p {
-        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <video autoplay muted loop playsinline>
-    <source src="https://archive.org/download/video_20250407_2113/video_20250407_2113.mp4" type="video/mp4" />
+  <video autoplay muted playsinline loop>
+    <source src="https://archive.org/download/video_20250407/video.mp4" type="video/mp4" />
     Tu navegador no soporta video HTML5.
   </video>
-
   <div class="content">
     <h1>SHUUDEN™</h1>
     <h2>A gesture | A thought | A way</h2>
@@ -103,6 +79,5 @@
     <p>Soon capsule Shuuden_001</p>
     <p>barcelona_2025</p>
   </div>
-
 </body>
 </html>
