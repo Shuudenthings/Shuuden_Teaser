@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="="es">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,61 +11,41 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-color: #000;
-      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000;
+      font-family: 'Satoshi', sans-serif;
     }
+
     .video-container {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
-      background-color: black;
+      background: #000;
     }
+
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: none;
     }
-    .video-loaded video {
-      display: block;
-    }
+
     .overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       width: 90%;
       max-width: 800px;
     }
-    .play-button {
-      background: white;
-      color: black;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-      font-family: 'Satoshi', sans-serif;
-      font-weight: 700;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    .show-play-button {
-      opacity: 1;
-      pointer-events: auto;
-    }
+
     h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
       margin: 0 0 0.5rem;
     }
+
     h2, p {
       font-weight: 400;
       font-size: clamp(1rem, 3vw, 1.5rem);
@@ -74,71 +54,19 @@
   </style>
 </head>
 <body>
-  <div class="video-container" id="videoContainer">
-    <video id="bgVideo" muted playsinline loop>
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
       <source src="video.mp4" type="video/mp4">
-      Tu navegador no admite la reproducción de vídeo.
+      Tu navegador no admite el vídeo HTML5.
     </video>
   </div>
-  
+
   <div class="overlay">
     <h1>SHUUDEN™</h1>
     <h2>A gesture | A thought | A way</h2>
     <p>Una herida revela una flor escondida</p>
     <p>Soon capsule Shuuden_001</p>
     <p>barcelona_2025</p>
-    <button id="playBtn" class="play-button">PLAY VIDEO</button>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.getElementById('bgVideo');
-      const videoContainer = document.getElementById('videoContainer');
-      const playBtn = document.getElementById('playBtn');
-      
-      // Detectar si es móvil
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      // Intenta autoplay primero
-      const playPromise = video.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          // Éxito: ocultar botón y mostrar video
-          playBtn.classList.remove('show-play-button');
-          videoContainer.classList.add('video-loaded');
-        }).catch(error => {
-          // Fallo: mostrar botón después de 1.5 segundos
-          setTimeout(() => {
-            playBtn.classList.add('show-play-button');
-          }, 1500);
-        });
-      }
-      
-      // Control manual del botón PLAY
-      playBtn.addEventListener('click', function() {
-        video.play()
-          .then(() => {
-            playBtn.classList.remove('show-play-button');
-            videoContainer.classList.add('video-loaded');
-          })
-          .catch(e => console.error('Error al reproducir:', e));
-      });
-      
-      // Reproducir al tocar cualquier parte en móviles (especialmente iOS)
-      if (isMobile) {
-        document.body.addEventListener('click', function firstTap() {
-          if (video.paused) {
-            video.play()
-              .then(() => {
-                playBtn.classList.remove('show-play-button');
-                videoContainer.classList.add('video-loaded');
-              });
-          }
-          document.body.removeEventListener('click', firstTap);
-        });
-      }
-    });
-  </script>
 </body>
 </html>
