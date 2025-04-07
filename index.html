@@ -9,23 +9,23 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: black;
       overflow: hidden;
+      background-color: black;
     }
-    iframe {
+    video {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      border: none;
+      object-fit: cover;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://streamable.com/e/n2vq8o?autoplay=1&nocontrols=1"
-          allow="autoplay"
-          allowfullscreen>
-  </iframe>
+  <video autoplay muted playsinline loop>
+    <source src="video.mp4" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
 </body>
 </html>
