@@ -1,70 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHUUDEN™</title>
   <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-
     html, body {
+      margin: 0;
+      padding: 0;
       height: 100%;
-      width: 100%;
       overflow: hidden;
-      font-family: 'Satoshi', sans-serif;
-      background: black;
+      background-color: black;
+      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     .video-container {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: -1;
+      background-color: black;
     }
 
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
-    .overlay-text {
+    .overlay {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       width: 90%;
       max-width: 800px;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      letter-spacing: 0.1em;
-      padding: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    h2, p {
+      font-weight: 400;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      margin: 0.5rem 0;
+    }
+
+    .play-button {
+      background: white;
+      color: black;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="./video.webm" type="video/webm">
-      <source src="./video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+    <video id="bgVideo" muted playsinline autoplay loop preload="auto">
+      <source src="bg.webm" type="video/webm">
+      <source src="bg.mp4" type="video/mp4">
+      Tu navegador no admite la reproducción de vídeo.
     </video>
   </div>
 
-  <div class="overlay-text">
+  <div class="overlay">
     <h1>SHUUDEN™</h1>
     <h2>A gesture | A thought | A way</h2>
     <p>Una herida revela una flor escondida</p>
     <p>Soon capsule Shuuden_001</p>
     <p>barcelona_2025</p>
+    <button id="playBtn" class="play-button">PLAY VIDEO</button>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('bgVideo');
+      const playBtn = document.getElementById('playBtn');
+
+      function tryPlay() {
+        video.play().catch(() => {
+          playBtn.style.display = 'block';
+        });
+      }
+
+      tryPlay();
+
+      playBtn.addEventListener('click', function () {
+        video.play();
+        playBtn.style.display = 'none';
+      });
+
+      document.addEventListener('touchstart', function firstTouch() {
+        tryPlay();
+        document.removeEventListener('touchstart', firstTouch);
+      }, { once: true });
+    });
+  </script>
 </body>
 </html>
