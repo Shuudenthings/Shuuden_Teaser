@@ -1,78 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHUUDEN</title>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap');
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHUUDEN</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;700&display=swap');
 
-      body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        font-family: 'Satoshi', sans-serif;
-        background-color: black;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      font-family: 'Satoshi', sans-serif;
+      overflow: hidden;
+    }
+
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .overlay h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .overlay h2 {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      font-weight: 400;
+    }
+
+    .overlay p {
+      margin-top: 12px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    @media (max-width: 600px) {
+      .overlay h1 {
+        font-size: 2rem;
       }
 
-      .video-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
+      .overlay h2 {
+        font-size: 1.2rem;
       }
 
-      .video-container video {
-        min-width: 100%;
-        min-height: 100%;
-        object-fit: cover;
+      .overlay p {
+        font-size: 0.9rem;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video id="bgVideo" muted playsinline autoplay loop preload="auto">
+      <source src="video-v3.webm" type="video/webm">
+      <source src="video-v3.mp4" type="video/mp4">
+      Tu navegador no admite la reproducción de vídeo.
+    </video>
+  </div>
 
-      .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-        padding: 0 20px;
-      }
-
-      h1 {
-        font-size: 3em;
-        margin: 0;
-        font-weight: 700;
-      }
-
-      h2 {
-        font-size: 1.5em;
-        font-weight: 400;
-        margin-top: 0.5em;
-      }
-
-      p {
-        font-size: 1em;
-        margin-top: 1em;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="video-container">
-      <video id="bgVideo" muted playsinline autoplay loop preload="auto">
-        <source src="video-v2.webm" type="video/webm">
-        <source src="video-v2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-    <div class="overlay">
-      <h1>SHUUDEN</h1>
-      <h2>A gesture | A thought | A way</h2>
-      <p>Una herida revela una flor escondida</p>
-    </div>
-  </body>
+  <div class="overlay">
+    <h1>SHUUDEN</h1>
+    <h2>A gesture | A thought | A way</h2>
+    <p>Una herida revela una flor escondida</p>
+  </div>
+</body>
 </html>
